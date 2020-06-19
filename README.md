@@ -1,3 +1,17 @@
+## UCSB论坛开发日志
+
+用React和Firebase开发
+
+6/18/2020
+
+今天拿原来CS185的一些代码写了首页和Tab，加了一个Sign in功能有待完善
+
+前端的设计我估计我是做不来了，先把功能实现了再说吧
+
+其实不知道自己会做到什么地步，一步一步来吧，看看今晚能不能把登录功能搞定先
+
+
+///////////////////////////
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
