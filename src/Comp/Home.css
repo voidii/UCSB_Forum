@@ -1,0 +1,16 @@
+.home{
+  background-color:#FFFFFF;
+  height:100%;
+  width:40%;
+  float:right;
+}
+.words{
+  float:center;
+  text-align: center;
+}
+.content{
+  height:100%;
+  width:60%;
+  float:left;
+  font-family:微软雅黑;
+}
