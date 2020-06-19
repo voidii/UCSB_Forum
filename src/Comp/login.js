@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import config from './config';
-import * as firebase from 'firebase';
+import { Redirect, Route } from 'react-router-dom';
+import { Toaster, Intent } from '@blueprintjs/core';
 
-if (!firebase.apps.length) {
-    firebase.initializeApp(config)
-} 
+import {app, base, googleProvider} from './fire'
+
+
 
 const loginstyle = {
     width:"90%",
@@ -21,10 +21,22 @@ class login extends Component {
         super(props)
         this.authWithGoogle = this.authWithGoogle.bind(this)
         this.authWithEmailPassward = this.authWithEmailPassward.bind(this)
+        this.state={
+            redirect: true
+
+        }
     }
 
     authWithGoogle(){
         console.log("google")
+        app.auth().signInWithPopup(googleProvider).then((result, error) => {
+            if(error){
+                this.toaster.show({intent: Intent.DANGER, message:"unable to sign in with google"})
+            }
+            else{
+                this.setState({ redirect: true })
+            }
+        })
     }
 
     authWithEmailPassward(event){
@@ -36,9 +48,29 @@ class login extends Component {
     }
 
     render() {
+        if(this.state.redirect){
+        
+            return (
+            <div style = {loginstyle}>
+                <div style = {{fontSize:"xx-large", fontFamily:"cursive", float:"center"}}>
+                    You
+                </div>
+                <div style = {{fontSize:"xx-large", fontFamily:"cursive", float:"center"}}>
+                    have 
+                </div>
+                <div style = {{fontSize:"xx-large", fontFamily:"cursive", float:"center"}}>
+                     successfully 
+                </div>
+                <div style = {{fontSize:"xx-large", fontFamily:"cursive", float:"center"}}>
+                    logged in! 
+                </div>
+                
+            </div>
+        )
+        }
         return (
             <div style = {loginstyle}>
-
+                <Toaster ref = { (element) => { this.toaster = element } }/>
 
                 <button style = {{width:"100%", backgroundColor: "#6bc4ff", color:"white"}} class = "btn-secondary" onClick = { () => { this.authWithGoogle() }}>
                     Sign In With Google
