@@ -10,6 +10,14 @@
 
 其实不知道自己会做到什么地步，一步一步来吧，看看今晚能不能把登录功能搞定先
 
+6/19/2020
+
+登陆功能基本完成，UI稍改一下就可以完成注册功能
+
+明天可以开始着手实现贴吧的类似功能了
+
+先这样吧
+
 
 ///////////////////////////
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
