@@ -4,6 +4,7 @@ import './App.css';
 import Tablist from './Comp/Tablist'
 import Body from './Comp/body'
 import Login from './Comp/login'
+import {app, base, googleProvider} from './Comp/fire'
 
 
 
@@ -15,13 +16,32 @@ class App extends Component {
     super();
     this.state = {
         activeTab: 1,
-        showModal: false
+        showModal: false,
+        authenicated: false
     }
     this.changeTab = (id) => {
       this.setState({
         activeTab: id
       })
     }
+  }
+
+  componentWillMount(){
+    this.removeAuthListener = app.auth().onAuthStateChanged((user) => {
+      if(user){
+        this.setState({
+          authenicated: true
+        })
+      }
+      else{
+        this.setState({
+          authenicated: false
+        })
+      }
+    })
+  }
+  componentWillUnmount(){
+    //this.removeAuthListener();
   }
 
   openModal = () => {
@@ -51,6 +71,14 @@ class App extends Component {
   // 指定模态框的父级
   getParent = () => {
     return document.querySelector('#App');
+  }
+
+  Logout = () => {
+    app.auth().signOut().then((user) => {
+              this.setState({
+                  authenicated: false
+              })
+          })
   }
 
 
@@ -83,7 +111,11 @@ class App extends Component {
         <div className = "header">
           
             <h1>UCSB小贴吧</h1>
-            <h3 onClick={this.openModal}>Login</h3>
+            {!this.state.authenicated && <h3 onClick={this.openModal}>Login</h3>}{/* 登陆后直接让login按钮消失嘻嘻*/}
+            {this.state.authenicated && <h3 onClick={this.Logout}>Logout</h3>}
+            {/*this.state.authenicated && <h3 onClick={this.openModal}>Login</h3>
+              未来加入更多功能比如用户自己页面之类的，可以查看自己的帖子
+            */}
         </div>
         
         <div className = "navbar">

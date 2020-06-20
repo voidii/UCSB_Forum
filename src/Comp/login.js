@@ -22,8 +22,7 @@ class login extends Component {
         this.authWithGoogle = this.authWithGoogle.bind(this)
         this.authWithEmailPassward = this.authWithEmailPassward.bind(this)
         this.state={
-            redirect: true
-
+            redirect: false
         }
     }
 
@@ -45,6 +44,35 @@ class login extends Component {
             email: this.emailInput.value,
             password: this.passwordInput.value
         }])
+        const email = this.emailInput.value
+        const password = this.passwordInput.value
+
+        app.auth().fetchSignInMethodsForEmail(email).then((providers) => {
+            if(providers.length === 0){
+                //create user
+                return app.auth().createUserWithEmailAndPassword(email, password)
+            }
+            else if(providers.indexOf("password") === -1){
+                //used google
+                this.loginForm.reset()
+                this.toaster.show({ intent: Intent.WARNING, message: "Try other log in"})
+            }
+            else{
+                //sign user in
+                this.loginForm.reset()
+                this.setState({redirect: true})
+                return app.auth().signInWithEmailAndPassword(email, password)
+            }
+        })
+        .then((user) => {
+            if(user && user.email){
+                this.loginForm.reset()
+                this.setState({redirect: true})
+            }
+        })
+        .catch((error) => {
+            this.toaster.show({intent: Intent.DANGER, message: error.mesaage})
+        })
     }
 
     render() {
