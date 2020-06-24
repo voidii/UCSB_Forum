@@ -17,7 +17,8 @@ class App extends Component {
     this.state = {
         activeTab: 1,
         showModal: false,
-        authenicated: false
+        authenicated: false,
+        uid:""
     }
     this.changeTab = (id) => {
       this.setState({
@@ -42,6 +43,9 @@ class App extends Component {
   }
   componentWillUnmount(){
     //this.removeAuthListener();
+  }
+  componentDidMount(){
+    this.getLoginInfo()
   }
 
   openModal = () => {
@@ -79,6 +83,13 @@ class App extends Component {
                   authenicated: false
               })
           })
+  }
+
+  getLoginInfo = (uid) => {
+    console.log(uid)
+    this.setState({
+      uid: uid
+    })
   }
 
 
@@ -158,7 +169,7 @@ class App extends Component {
           // portalClassName="protal"   // 指定div Portal的classname（因为没有默认样式，所以一般不用指定）。
           // contentLabel="一个demo"   // 显示在div content的自定义属性:aria-label="通告给屏幕的内容"。
         >
-          <Login/>
+          <Login passInfo = {this.getLoginInfo}/>
           <button onClick={this.closeModal}>关闭模态框</button>
         </Modal>
 
