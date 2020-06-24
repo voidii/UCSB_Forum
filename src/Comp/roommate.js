@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {app, base, googleProvider} from './fire'
 import * as firebase from 'firebase';
 import config from './config';
+import './Comment.css'
 
 if (!firebase.apps.length) {
     firebase.initializeApp(config)
@@ -49,7 +50,7 @@ class Roommate extends Component {
                 messages.map(developer => 
                   <div>
                     <div className="editContent">
-                      {developer.view && <div className="content">{ developer.message }</div>}
+                      { true && <div className="content">{ developer.message }</div>}
                       <div className='metadata'>
 	              	      <div className='author'>{developer.name}</div>
                         <div className='author'>{developer.des}</div>
@@ -75,9 +76,6 @@ class Roommate extends Component {
                         <input type="text" placeholder='Description' ref='des'/>
                     </div>
                     <div className='form-row'>
-                        <input type="text" placeholder='Do you want your message to be private?(Yes/No)' ref='view'/>
-                    </div>
-                    <div className='form-row'>
                         <textarea placeholder='Message' ref='message'></textarea>
                     </div>
                     <div className='form-row'>
@@ -99,7 +97,7 @@ class Roommate extends Component {
         let message = this.refs.message.value;
         let uid = this.refs.uid.value;
         let des = this.refs.des.value;
-        let view = this.refs.view.value;
+      
         let Email = this.refs.Email.value;
         let date = new Date().toLocaleString();
         let warning = this.refs.warning;
@@ -128,15 +126,12 @@ class Roommate extends Component {
           messages[devIndex].date = date;
           messages[devIndex].des = des;
           messages[devIndex].Email = Email;
-          if(view === "Yes"){
-            messages[devIndex].view = true;
-          }
           this.setState({ messages });
         }
         else if (name && message ) {
           const uid = new Date().getTime().toString();
           const { messages } = this.state;
-          messages.push({ uid, name, message,date,des,view,Email })
+          messages.push({ uid, name, message,date,des,Email })
           this.setState({ messages });
         }
       
@@ -144,7 +139,6 @@ class Roommate extends Component {
         this.refs.message.value = '';
         this.refs.uid.value = '';
         this.refs.des.value = '';
-        this.refs.view.value = '';
         this.refs.Email.value = '';
 
       }
@@ -161,7 +155,6 @@ class Roommate extends Component {
         this.refs.uid.value = developer.uid;
         this.refs.name.value = developer.name;
         this.refs.message.value = developer.message;
-        this.refs.view.value = developer.view;
         //this.refs.date.value = developer.date;
       }
        
