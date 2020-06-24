@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect, Route } from 'react-router-dom';
 import { Toaster, Intent } from '@blueprintjs/core';
 
 import {app, base, googleProvider} from './fire'
@@ -22,8 +21,14 @@ class login extends Component {
         this.authWithGoogle = this.authWithGoogle.bind(this)
         this.authWithEmailPassward = this.authWithEmailPassward.bind(this)
         this.state={
-            redirect: false
+            redirect: false,
+            uid: ""
         }
+    }
+
+    getLoginInfo = () => {
+        var uid = this.state.uid;
+        this.props.passInfo(uid);  
     }
 
     authWithGoogle(){
@@ -59,15 +64,18 @@ class login extends Component {
             }
             else{
                 //sign user in
-                this.loginForm.reset()
-                this.setState({redirect: true})
+                //this.loginForm.reset()
+                //this.setState({redirect: true})
                 return app.auth().signInWithEmailAndPassword(email, password)
             }
         })
-        .then((user) => {
-            if(user && user.email){
+        .then((data) => {
+            if(data.user.uid && data.user.email){
                 this.loginForm.reset()
-                this.setState({redirect: true})
+                this.setState({
+                    redirect: true,
+                    uid: data.user.uid
+                })
             }
         })
         .catch((error) => {

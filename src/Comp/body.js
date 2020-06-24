@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Home from './Home'
+import Roomate from './roommate'
 
 
 
@@ -12,7 +13,7 @@ class body extends Component {
         if(this.props.activeTab === 1)
             return <Home/>
         else if(this.props.activeTab === 2)
-            return <Home/>
+            return <Roomate/>
         else if(this.props.activeTab === 3)
             return <Home/>
         else  if(this.props.activeTab === 4)
