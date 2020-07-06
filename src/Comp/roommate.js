@@ -95,8 +95,9 @@ class Roommate extends Component {
         event.preventDefault();
         let name = this.refs.name.value;
         let message = this.refs.message.value;
-        let uid = this.refs.uid.value;
+        let uid = this.props.uid;
         let des = this.refs.des.value;
+        console.log(uid);
       
         let Email = this.refs.Email.value;
         let date = new Date().toLocaleString();
@@ -117,19 +118,16 @@ class Roommate extends Component {
         }
       
         if (uid && name && message){
-          const { messages } = this.state;
-          const devIndex = messages.findIndex(data => {
-            return data.uid === uid 
-          });
-          messages[devIndex].name = name;
-          messages[devIndex].message = message;
-          messages[devIndex].date = date;
-          messages[devIndex].des = des;
-          messages[devIndex].Email = Email;
-          this.setState({ messages });
-        }
-        else if (name && message ) {
-          const uid = new Date().getTime().toString();
+          //const { messages } = this.state;
+          //const devIndex = messages.findIndex(data => {
+          //  return data.uid === uid 
+          //});
+          //messages[devIndex].name = name;
+          //messages[devIndex].message = message;
+          //messages[devIndex].date = date;
+          //messages[devIndex].des = des;
+          //messages[devIndex].Email = Email;
+          //this.setState({ messages });
           const { messages } = this.state;
           messages.push({ uid, name, message,date,des,Email })
           this.setState({ messages });
@@ -137,7 +135,7 @@ class Roommate extends Component {
       
         this.refs.name.value = '';
         this.refs.message.value = '';
-        this.refs.uid.value = '';
+        //this.refs.uid.value = '';
         this.refs.des.value = '';
         this.refs.Email.value = '';
 
@@ -146,13 +144,13 @@ class Roommate extends Component {
       removeData = (developer) => {
         const { messages } = this.state;
         const newState = messages.filter(data => {
-          return data.uid !== developer.uid;
+          return data.date !== developer.date;
         });
         this.setState({ messages: newState });
       }
       
       updateData = (developer) => {
-        this.refs.uid.value = developer.uid;
+        //this.refs.uid.value = developer.uid;
         this.refs.name.value = developer.name;
         this.refs.message.value = developer.message;
         //this.refs.date.value = developer.date;

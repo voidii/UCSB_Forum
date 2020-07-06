@@ -36,6 +36,14 @@
 
 今天先这样吧
 
+7/5/2020
+
+好吧，好久不更新了，好不容易更新一下还是个憨憨功能
+
+遗留问题解决:已经可以成功获取用户的UID，发帖子时uid会和用户的uid对齐，删除时会根据发布时间来删除，以后可能可以加一个uid要和操作用户一样才能删除的判定
+
+先这样今天
+
 ///////////////////////////
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

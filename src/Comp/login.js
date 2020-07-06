@@ -26,10 +26,6 @@ class login extends Component {
         }
     }
 
-    getLoginInfo = () => {
-        var uid = this.state.uid;
-        this.props.passInfo(uid);  
-    }
 
     authWithGoogle(){
         console.log("google")
