@@ -1,30 +1,36 @@
 import React, { Component } from 'react';
-import {app, base, googleProvider} from './fire'
+import Modal from 'react-modal';
+import Reply from './reply';
 import * as firebase from 'firebase';
-import config from './config';
 import './Comment.css'
 
-if (!firebase.apps.length) {
-    firebase.initializeApp(config)
- }
+
+
+
 
 class Roommate extends Component {
     constructor(){
         super();
         this.state = {
-            messages: []
+            messages: [],
+            showModal: false,
+            id_for_message:""
         }
     }
     writeUserData = () => {
-        firebase.database().ref('/message').set(this.state);
+        firebase.database().ref('/message').set(this.state.messages);
         console.log('DATA SAVED');
     }
       
     getUserData = () => {
         let ref = firebase.database().ref('/message');
         ref.on('value', snapshot => {
-          const state = snapshot.val();
-          this.setState(state);
+          const message = snapshot.val();
+          this.setState(
+            {
+              messages: message
+            }
+          );
         });
         console.log('DATA RETRIEVED');
     }
@@ -40,6 +46,21 @@ class Roommate extends Component {
           this.writeUserData();
         }
     }
+
+    openModal = (developer) => {
+      this.setState({ 
+        showModal: true,
+        id_for_message: developer.id_for_message
+      });
+    }
+
+    closeModal = () => {
+      this.setState({ 
+        showModal: false,
+        id_for_message:""
+      });
+    }
+
     render() {
         const { messages } = this.state;
         return(
@@ -50,7 +71,7 @@ class Roommate extends Component {
                 messages.map(developer => 
                   <div>
                     <div className="editContent">
-                      { true && <div className="content">{ developer.message }</div>}
+                      <div className="content" href='#' onClick={ () => this.openModal(developer)}>{ developer.message }</div>
                       <div className='metadata'>
 	              	      <div className='author'>{developer.name}</div>
                         <div className='author'>{developer.des}</div>
@@ -87,6 +108,20 @@ class Roommate extends Component {
                 </form>
               </div>
             </div>
+            <Modal 
+              isOpen={this.state.showModal}
+              overlayClassName="overlay"   
+              className="modal"   
+
+              onAfterOpen={this.handleAfterOpenFunc}  
+              shouldCloseOnOverlayClick={true}   
+            >
+              <Reply id_for_message = {this.state.id_for_message}/>
+              <button onClick={this.closeModal}>关闭模态框</button>
+            </Modal>
+
+
+
           </div>
         )
       }
@@ -128,8 +163,9 @@ class Roommate extends Component {
           //messages[devIndex].des = des;
           //messages[devIndex].Email = Email;
           //this.setState({ messages });
+          const id_for_message = new Date().getTime().toString() + uid;
           const { messages } = this.state;
-          messages.push({ uid, name, message,date,des,Email })
+          messages.push({ id_for_message, uid, name, message,date,des,Email })
           this.setState({ messages });
         }
       

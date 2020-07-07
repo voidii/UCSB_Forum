@@ -44,6 +44,18 @@
 
 先这样今天
 
+7/6/2020
+
+上午出现了一个关于firebase的bug，但是无法复现了，不知道为啥，等日后调试看看吧
+
+帖子点击之后出现模态框，并可以将帖子的独立id传给reply的component
+
+遗留问题一个都没有解决
+
+新增问题：页面刷新之后，firebase的auth已经消失了但是还是显示logged in状态，有待解决，没有uid的情况下是不能发送帖子的
+
+先这样
+
 ///////////////////////////
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
