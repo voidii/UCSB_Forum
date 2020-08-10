@@ -1,0 +1,9 @@
+.class_list{
+    margin: 0;
+    width:100%;
+    padding: 0;
+    font-family: cursive;
+    color: white;
+    display: flex;
+    background-color:#003660
+}

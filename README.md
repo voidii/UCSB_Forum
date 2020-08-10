@@ -56,6 +56,17 @@
 
 先这样
 
+8/10/2020
+
+跟LZH小朋友聊了聊之后决定实现一些新的功能：
+
+1，实时聊天室
+
+2，匿名发帖
+
+今天把聊天室的框架和基本的CSS写出来了，然后谷歌了一下发现这玩意儿有点难实现，下午再看看
+
+
 ///////////////////////////
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
