@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import Class_list from './Class_list';
-import Class_chat_screen from './Class_chat_screen';
+import ClassList from './Class_list';
+import ClassChatScreen from './Class_chat_screen';
 import './class_room.css';
 import * as firebase from 'firebase';
 
-class Class_room extends Component {
+class ClassRoom extends Component {
     constructor(){
         super();
         this.state = {
@@ -45,13 +45,14 @@ class Class_room extends Component {
         return (
             <div>
                 <div className = "list">
-                    <Class_list
+                    <ClassList
                         class = {classes}  
                         changeClass = {this.changeClass}
                         activeClass = {this.state.activeClass}/>
                 </div>
                 <div className = "screen">
-                    <Class_chat_screen
+                    <ClassChatScreen
+                        uid = {this.props.uid}
                         class = {classes}
                         title = {this.state.activeClass}
                         />
@@ -61,4 +62,4 @@ class Class_room extends Component {
     }
 }
 
-export default Class_room;
+export default ClassRoom;

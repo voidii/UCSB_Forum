@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Home from './Home'
 import Roomate from './roommate'
-import Class_room from './class_room'
+import ClassRoom from './class_room'
 
 
 
@@ -14,10 +14,9 @@ class body extends Component {
         if(this.props.activeTab === 1)
             return <Home/>
         else if(this.props.activeTab === 2)
-            
             return <Roomate uid = {this.props.uid}/>
         else if(this.props.activeTab === 3)
-            return <Class_room/>
+            return <ClassRoom uid = {this.props.uid}/>
         else  if(this.props.activeTab === 4)
             return <Home/>
         else

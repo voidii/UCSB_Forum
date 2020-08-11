@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './class_list.css';
 
-class Class_chat extends Component {
+class ClassChat extends Component {
     addStyling = () => {
         if(this.props.class.title === this.props.activeClass){
             return {backgroundColor: '#C0E4FF'}
@@ -24,4 +24,4 @@ class Class_chat extends Component {
     }
 }
 
-export default Class_chat
+export default ClassChat
