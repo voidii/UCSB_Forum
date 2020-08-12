@@ -68,10 +68,23 @@
 
 8/10/2020 二次更新
 
-大致框架搭好了，剩下的就是功能实现，目前用的是https://github.com/brandonmowat/react-chat-ui但是感觉应该会换成https://www.npmjs.com/package/react-web-gifted-chat，后者功能更多更复杂，而且demo和我们一样也是用firebase，感觉可以抄一抄哈哈
+大致框架搭好了，剩下的就是功能实现，目前用的是：
+https://github.com/brandonmowat/react-chat-ui
+
+但是感觉应该会换成：
+https://www.npmjs.com/package/react-web-gifted-chat
+
+后者功能更多更复杂，而且demo和我们一样也是用firebase，感觉可以抄一抄哈哈
 
 今天先这样
 
+8/11/2020
+
+实现了聊天室功能，但是CSS要改改
+
+明天可以测试多人聊天
+
+今天先这样
 
 ///////////////////////////
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

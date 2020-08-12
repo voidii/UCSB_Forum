@@ -10,7 +10,6 @@ class body extends Component {
     
     
     displayContent = () => {
-        console.log(this.props.uid)
         if(this.props.activeTab === 1)
             return <Home/>
         else if(this.props.activeTab === 2)

@@ -1,0 +1,12 @@
+.list{
+    width:15%;
+    float:left;
+}
+.screen{
+    width:85%;
+    height:100%;
+    float:right;
+}
+.sub{
+    position: absolute;
+}

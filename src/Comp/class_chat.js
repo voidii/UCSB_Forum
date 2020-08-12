@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './class_list.css';
+import ClassChatScreen from './Class_chat_screen'
+import './class_chat.css';
 
 class ClassChat extends Component {
     addStyling = () => {
@@ -12,14 +13,24 @@ class ClassChat extends Component {
     }
     render() {
         return (
-            <div className = "class_list"
+            <div>
+
+            <div className = "list"
             style = {this.addStyling()}
             onClick={this.props.changeClass.bind(this, this.props.class.title)}
             >
                 <h2>
                     {this.props.class.title}
                 </h2>
-            </div>  
+            </div> 
+            {this.props.class.title === this.props.activeClass && 
+            <div className = "screen"> 
+                <ClassChatScreen
+                    uid = {this.props.uid}
+                    title = {this.props.class.title}
+                />
+            </div>}
+            </div>
         );
     }
 }

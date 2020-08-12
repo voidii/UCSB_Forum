@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Class_chat from './class_chat';
-import * as firebase from 'firebase';
+import ClassChat from './class_chat';
+import ClassChatScreen from './Class_chat_screen'
 
 class Class_list extends Component {
     render() {
@@ -24,14 +24,23 @@ class Class_list extends Component {
             {
               id: 5,
               title: 'ECON10A'
+            },
+            {
+              id: 6,
+              title: 'ECON100A'
+            },
+            {
+              id: 7,
+              title: 'ECON1000A'
             }
             ]
           return classes.map((indClass) => (
-              <Class_chat class = {indClass} 
+              <ClassChat class = {indClass} 
               changeClass={this.props.changeClass}
               activeClass = {this.props.activeClass}/>
-  
-          ));
+          )
+          
+          );
     }
 }
 

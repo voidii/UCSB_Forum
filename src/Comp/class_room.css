@@ -1,8 +1,6 @@
-.list{
-    width:15%;
-    float:left;
+.Class_page{
+    height:82%;
+    width:100%;
+    position: absolute;
 }
-.screen{
-    width:85%;
-    float:right;
-}
+
