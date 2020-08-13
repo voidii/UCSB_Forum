@@ -36,6 +36,7 @@ class Class_list extends Component {
             ]
           return classes.map((indClass) => (
               <ClassChat class = {indClass} 
+              uid = {this.props.uid}
               changeClass={this.props.changeClass}
               activeClass = {this.props.activeClass}/>
           )

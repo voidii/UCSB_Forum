@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import { GiftedChat } from "react-web-gifted-chat";
+import { GiftedChat, Bubble } from "react-web-gifted-chat";
 import firebase from "firebase";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
@@ -8,20 +7,19 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import ListItemText from "@material-ui/core/ListItemText";
-import DialogTitle from "@material-ui/core/DialogTitle";
-import Dialog from "@material-ui/core/Dialog";
 import Typography from "@material-ui/core/Typography";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 
 
 class ClassChatScreen extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
-      empty_mess: [],
       messages: [],
-      user: {},
+      user: {
+        id: props.uid,
+      },
       isAuthenticated: true,
     };
   }
@@ -29,19 +27,6 @@ class ClassChatScreen extends Component {
   componentDidMount() {
     this.loadMessages();
   }
-
-  //componentDidUpdate(prevProps){
-  //  if(prevProps.title !== this.props.title)
-  //  {
-  //    console.log("update:" + this.state.messages);
-  //    this.setState(
-  //      {
-  //        messages:[]
-  //      },
-  //      this.loadMessages()
-  //    )
-  //  }
-  //}
 
   loadMessages () {
     let ref = firebase.database().ref("/" + this.props.title + "/messages/");
@@ -60,6 +45,7 @@ class ClassChatScreen extends Component {
 
   onSend(messages) {
     for (const message of messages) {
+      //message = message + {"imgae":""}
       this.saveMessage(message);
     }
   }
@@ -74,6 +60,19 @@ class ClassChatScreen extends Component {
       });
   }
 
+  renderBubble = props => {
+    return (
+      <Bubble
+        {...props}
+        wrapperStyle={{
+          left: {
+            backgroundColor: '#f0f0f0',
+          },
+        }}
+      />
+    )
+    }
+
   renderSignOutButton() {
     if (this.state.isAuthenticated) {
       return <Button /*onClick={() => this.signOut()}*/>Sign out</Button>;
@@ -82,12 +81,13 @@ class ClassChatScreen extends Component {
   }
 
   renderChat() {
-    console.log("render: " + this.state.messages);
     return (
       <GiftedChat
-        user={this.chatUser}
+        user={this.state.user}
         messages={this.state.messages.slice().reverse()}
-        onSend={messages => this.onSend(messages)}
+        onSend={messages=> this.onSend(messages)}
+        scrollToBottom
+        renderBubble={this.renderBubble}
       />
     );
   }

@@ -41,12 +41,15 @@ class App extends Component {
     this.removeAuthListener = app.auth().onAuthStateChanged((user) => {
       if(user){
         this.setState({
-          authenicated: true
+          authenicated: true,
+          uid:user.uid
         })
+        console.log(user.uid)
       }
       else{
         this.setState({
-          authenicated: false
+          authenicated: false,
+          uid:""
         })
       }
     })
@@ -90,10 +93,11 @@ class App extends Component {
 
   Logout = () => {
     app.auth().signOut().then((user) => {
-              this.setState({
-                  authenicated: false
-              })
-          })
+        this.setState({
+            authenicated: false,
+            uid:""
+        })
+    })
   }
 
   authWithGoogle(){
@@ -150,29 +154,7 @@ authWithEmailPassward(event){
 
 
   render() {
-    
-    const tabs = [
-      {
-        id: 1,
-        title: '首页'
-      },
-      {
-        id: 2,
-        title: '找室友'
-      },
-      {
-        id: 3,
-        title: '找课友'
-      },
-      {
-        id: 4,
-        title: '找二手'
-      },
-      {
-        id: 5,
-        title: '顺风车'
-      }
-    ]
+
     return (
       <div>
         <div className = "header">
@@ -186,7 +168,7 @@ authWithEmailPassward(event){
         </div>
         
         <div className = "navbar">
-          <Tablist tabs={tabs}  
+          <Tablist  
           changeTab={this.changeTab}
           activeTab={this.state.activeTab}
           />

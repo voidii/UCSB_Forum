@@ -22,6 +22,7 @@ class ClassRoom extends Component {
             <div>
                 <div>
                     <ClassList 
+                        uid = {this.props.uid}
                         changeClass = {this.changeClass}
                         activeClass = {this.state.activeClass}/>
                 </div>
