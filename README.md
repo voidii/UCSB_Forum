@@ -86,6 +86,10 @@ https://www.npmjs.com/package/react-web-gifted-chat
 
 今天先这样
 
+8/12/2020
+
+稍微改了一下聊天室的代码，删掉了一些不需要的部分
+
 ///////////////////////////
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

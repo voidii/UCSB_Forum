@@ -30,18 +30,18 @@ class ClassChatScreen extends Component {
     this.loadMessages();
   }
 
-  componentDidUpdate(prevProps){
-    if(prevProps.title !== this.props.title)
-    {
-      console.log("update:" + this.state.messages);
-      this.setState(
-        {
-          messages:[]
-        },
-        this.loadMessages()
-      )
-    }
-  }
+  //componentDidUpdate(prevProps){
+  //  if(prevProps.title !== this.props.title)
+  //  {
+  //    console.log("update:" + this.state.messages);
+  //    this.setState(
+  //      {
+  //        messages:[]
+  //      },
+  //      this.loadMessages()
+  //    )
+  //  }
+  //}
 
   loadMessages () {
     let ref = firebase.database().ref("/" + this.props.title + "/messages/");

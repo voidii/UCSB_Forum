@@ -25,10 +25,12 @@ class ClassChat extends Component {
             </div> 
             {this.props.class.title === this.props.activeClass && 
             <div className = "screen"> 
+            <div className = "sub">
                 <ClassChatScreen
                     uid = {this.props.uid}
                     title = {this.props.class.title}
                 />
+                </div>
             </div>}
             </div>
         );

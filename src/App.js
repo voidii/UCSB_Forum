@@ -3,8 +3,7 @@ import Modal from 'react-modal';
 import './App.css';
 import Tablist from './Comp/Tablist'
 import Body from './Comp/body'
-import Login from './Comp/login'
-import {app, base, googleProvider} from './Comp/fire'
+import {app, googleProvider} from './Comp/fire'
 import { Toaster, Intent } from '@blueprintjs/core';
 
 const loginstyle = {
