@@ -16,7 +16,18 @@ class ClassChatScreen extends Component {
   constructor(props) {
     super();
     this.state = {
-      messages: [],
+      messages: [{
+        id: 1,
+        text: 'My message',
+        createdAt: new Date(Date.UTC(2016, 5, 11, 17, 20, 0)),
+        user: {
+          id: 2,
+          name: 'React',
+          avatar: 'https://facebook.github.io/react/img/logo_og.png',
+        },
+        image: "http://5b0988e595225.cdn.sohucs.com/images/20190311/6918fe35e3424cc99fd759e246397af9.jpeg",
+        
+      }],
       user: {
         id: props.uid,
       },
@@ -33,19 +44,25 @@ class ClassChatScreen extends Component {
     ref.on("child_added", snap => {
       const message = snap.val();
       message.id = snap.key;
+      if(message.createdAt)
+      {
+        message.createdAt = new Date(message.createdAt)
+      }
       const { messages } = this.state;
       messages.push(message);
       this.setState(
         {
           messages
-        },console.log(this.state)
+        }
       );
     });
   }
 
   onSend(messages) {
-    for (const message of messages) {
-      //message = message + {"imgae":""}
+    console.log(messages)
+    for (var message of messages) {
+      //message = message + {"createdAt": new Date()}
+      message.createdAt = JSON.stringify(new Date()).replace(/['"]+/g, '')
       this.saveMessage(message);
     }
   }
@@ -53,7 +70,7 @@ class ClassChatScreen extends Component {
   saveMessage(message) {
     return firebase
       .database()
-      .ref("/" + this.props.title + "/messages/")
+      .ref("/" + this.props.title + "/messages")
       .push(message)
       .catch(function(error) {
         console.error("Error saving message to Database:", error);

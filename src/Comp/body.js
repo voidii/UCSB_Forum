@@ -3,11 +3,7 @@ import Home from './Home'
 import Roomate from './roommate'
 import ClassRoom from './class_room'
 
-
-
-
 class body extends Component {
-    
     
     displayContent = () => {
         if(this.props.activeTab === 1)

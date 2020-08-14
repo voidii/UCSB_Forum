@@ -1,40 +1,39 @@
 import React, { Component } from 'react';
 import ClassChat from './class_chat';
-import ClassChatScreen from './Class_chat_screen'
+import firebase from "firebase";
 
 class Class_list extends Component {
-    render() {
-        const classes = [
-            {
-              id: 1,
-              title: 'ECON1'
-            },
-            {
-              id: 2,
-              title: 'CS8'
-            },
-            {
-              id: 3,
-              title: 'CS16'
-            },
-            {
-              id: 4,
-              title: 'ECON2'
-            },
-            {
-              id: 5,
-              title: 'ECON10A'
-            },
-            {
-              id: 6,
-              title: 'ECON100A'
-            },
-            {
-              id: 7,
-              title: 'ECON1000A'
-            }
-            ]
-          return classes.map((indClass) => (
+  constructor(){
+    super();
+    this.state = {
+      classes:[
+      ]
+    }
+  } 
+
+  componentDidMount() {
+    this.getClassesData();
+  }
+
+  writeClassesData() {
+    firebase.database().ref("/UCSB/Classes").set(this.state.classes);
+    console.log('DATA SAVED');
+  }
+
+  getClassesData () {
+    let ref = firebase.database().ref("/UCSB/Classes");
+    ref.on("value", snap => {
+      const classes = snap.val();
+      this.setState(
+        {
+          classes
+        }
+      );
+    });
+  }
+  
+  render() {  
+          return this.state.classes.map((indClass) => (
               <ClassChat class = {indClass} 
               uid = {this.props.uid}
               changeClass={this.props.changeClass}

@@ -90,6 +90,14 @@ https://www.npmjs.com/package/react-web-gifted-chat
 
 稍微改了一下聊天室的代码，删掉了一些不需要的部分
 
+8/13/2020
+
+聊天室消息可以正常显示时间了，把课名上传到了数据库，未来要弄一个“手动添加课程”的功能，和搜索功能
+
+聊天室的发图功能大概率要使用firebase的storage功能了，唉好麻烦
+
+先这样
+
 ///////////////////////////
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
