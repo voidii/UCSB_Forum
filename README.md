@@ -98,6 +98,12 @@ https://www.npmjs.com/package/react-web-gifted-chat
 
 先这样
 
+8/14/2020
+
+增加了“添加课程聊天室”功能，只有登录了的人才能看到添加按钮，并设置了json package，现在已经可以depoly在github上，目前还在考虑搜索功能的实现
+
+就这样
+
 ///////////////////////////
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

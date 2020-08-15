@@ -55,8 +55,14 @@ class AddClass extends Component {
     }
     handleSubmit = (event) => {
         let title = this.refs.title.value.toUpperCase();
-        console.log(title)
-        console.log(this.state.title)
+        if(!title) return;
+        for(var i = 0,len = this.state.title.length; i < len; i++)
+        {
+            if(title === this.state.title[i].title)
+            {
+                return
+            }
+        }
         let curClass = this.state.title;
         curClass.push({title})
         this.setState({
