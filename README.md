@@ -104,6 +104,14 @@ https://www.npmjs.com/package/react-web-gifted-chat
 
 就这样
 
+8/15/2020
+
+“添加课程聊天室”功能现在不会加入重复的课程
+
+登陆时会检测是否为edu账号，如果不是会提示部分功能将受到限制
+
+上午的part结束
+
 ///////////////////////////
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

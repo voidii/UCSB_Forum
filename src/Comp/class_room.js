@@ -42,7 +42,7 @@ class ClassRoom extends Component {
     render() {
         return (
             <div>
-                {this.props.uid !== "" && 
+                {this.props.edu && 
                 <Fab color="primary" aria-label="add" onClick = {() => this.openModal()} style = {style}>
                     <AddIcon />
                 </Fab>

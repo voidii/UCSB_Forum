@@ -11,7 +11,7 @@ class body extends Component {
         else if(this.props.activeTab === 2)
             return <Roomate uid = {this.props.uid}/>
         else if(this.props.activeTab === 3)
-            return <ClassRoom uid = {this.props.uid}/>
+            return <ClassRoom uid = {this.props.uid} edu = {this.props.edu}/>
         else  if(this.props.activeTab === 4)
             return <Home/>
         else

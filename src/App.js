@@ -28,7 +28,8 @@ class App extends Component {
         showModal: false,
         authenicated: false,
         uid:"",
-        redirect: false
+        redirect: false,
+        edu:false
     }
     this.changeTab = (id) => {
       this.setState({
@@ -40,10 +41,20 @@ class App extends Component {
   componentWillMount(){
     this.removeAuthListener = app.auth().onAuthStateChanged((user) => {
       if(user){
-        this.setState({
-          authenicated: true,
-          uid:user.uid
-        })
+        console.log(user.email)
+        if(user.email.substr(user.email.length-3,3) !== "edu"){
+          this.setState({
+            authenicated: true,
+            uid:user.uid,
+            edu:true
+          })
+        }
+        else{
+          this.setState({
+            authenicated: true,
+            uid:user.uid,
+          })
+        }
         console.log(user.uid)
       }
       else{
@@ -175,7 +186,7 @@ authWithEmailPassward(event){
           
         </div>
         <div className = "mainbody">
-          <Body activeTab = {this.state.activeTab} uid = {this.state.uid}/>
+          <Body activeTab = {this.state.activeTab} uid = {this.state.uid} edu = {this.state.edu}/>
         </div>
 
         <Modal 
@@ -249,6 +260,12 @@ authWithEmailPassward(event){
               <div style = {{fontSize:"xx-large", fontFamily:"cursive", float:"center"}}>
                   logged in! 
               </div>
+              {
+                this.state.edu && 
+              <div style = {{fontSize:"x-large", fontFamily:"cursive", float:"center"}}>
+                  It is detected that you are not a student from a US college. If you are, please sign in with your .edu email account.
+              </div>
+              }
             </div>
           }
           <button onClick={this.closeModal}>关闭模态框</button>
