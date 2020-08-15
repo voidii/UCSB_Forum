@@ -61,7 +61,6 @@ class ClassChatScreen extends Component {
   onSend(messages) {
     console.log(messages)
     for (var message of messages) {
-      //message = message + {"createdAt": new Date()}
       message.createdAt = JSON.stringify(new Date()).replace(/['"]+/g, '')
       this.saveMessage(message);
     }
