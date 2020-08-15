@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/UCSB_Forum/static/css/main.73f17661.chunk.css",
+    "main.js": "/UCSB_Forum/static/js/main.05431598.chunk.js",
+    "main.js.map": "/UCSB_Forum/static/js/main.05431598.chunk.js.map",
+    "runtime-main.js": "/UCSB_Forum/static/js/runtime-main.22dd0454.js",
+    "runtime-main.js.map": "/UCSB_Forum/static/js/runtime-main.22dd0454.js.map",
+    "static/js/2.8ec6e5aa.chunk.js": "/UCSB_Forum/static/js/2.8ec6e5aa.chunk.js",
+    "static/js/2.8ec6e5aa.chunk.js.map": "/UCSB_Forum/static/js/2.8ec6e5aa.chunk.js.map",
+    "index.html": "/UCSB_Forum/index.html",
+    "precache-manifest.fc312d86e6da89efe25656af504d31d7.js": "/UCSB_Forum/precache-manifest.fc312d86e6da89efe25656af504d31d7.js",
+    "service-worker.js": "/UCSB_Forum/service-worker.js",
+    "static/css/main.73f17661.chunk.css.map": "/UCSB_Forum/static/css/main.73f17661.chunk.css.map",
+    "static/js/2.8ec6e5aa.chunk.js.LICENSE.txt": "/UCSB_Forum/static/js/2.8ec6e5aa.chunk.js.LICENSE.txt",
+    "static/media/UCSB.jpg": "/UCSB_Forum/static/media/UCSB.83a7d2be.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.22dd0454.js",
+    "static/js/2.8ec6e5aa.chunk.js",
+    "static/css/main.73f17661.chunk.css",
+    "static/js/main.05431598.chunk.js"
+  ]
+}
