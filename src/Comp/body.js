@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Home from './Home'
 import Roomate from './roommate'
 import ClassRoom from './class_room'
+import About from './About'
 
 class body extends Component {
     
@@ -14,6 +15,8 @@ class body extends Component {
             return <ClassRoom uid = {this.props.uid} edu = {this.props.edu}/>
         else  if(this.props.activeTab === 4)
             return <Home/>
+        else  if(this.props.activeTab === 6)
+            return <About/>
         else
             return <Home/>
     }

@@ -23,6 +23,10 @@ class Tablist extends Component {
           {
             id: 5,
             title: '顺风车'
+          },
+          {
+            id: 6,
+            title: '关于UCSB'
           }
           ]
         return tabs.map((indTab) => (

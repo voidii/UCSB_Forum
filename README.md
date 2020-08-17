@@ -112,6 +112,12 @@ https://www.npmjs.com/package/react-web-gifted-chat
 
 上午的part结束
 
+8/17/2020
+
+增加了聊天室的搜索功能，大小写无所谓
+
+
+
 ///////////////////////////
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

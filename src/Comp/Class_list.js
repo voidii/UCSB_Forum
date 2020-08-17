@@ -7,12 +7,24 @@ class Class_list extends Component {
     super();
     this.state = {
       classes:[
-      ]
+      ],
+      query:""
     }
   } 
 
   componentDidMount() {
     this.getClassesData();
+  }
+
+  searchClass(){
+    var ref = firebase.database().ref("UCSB/Classes");
+    ref.orderByChild("title").equalTo(this.state.query).on("child_added", snapshot => {
+      console.log(snapshot.val());
+      let result = snapshot.val();
+      this.setState({
+        classes:[result]
+      })
+    });
   }
 
   writeClassesData() {
@@ -31,17 +43,51 @@ class Class_list extends Component {
       );
     });
   }
+
+  renderList() {
+    return this.state.classes.map((indClass) => (
+        <ClassChat class = {indClass} 
+        uid = {this.props.uid}
+        changeClass={this.props.changeClass}
+        activeClass = {this.props.activeClass}/>
+      ))
+  }
+
+  handleOnInputChange = (event) => {
+    const query = event.target.value.toUpperCase();
+    if(query === "")
+    {
+      this.getClassesData()
+    }
+    else{
+      this.setState({ query: query}, () => {
+        this.searchClass();
+      });
+    }
+  };
   
   render() {  
-          return this.state.classes.map((indClass) => (
-              <ClassChat class = {indClass} 
-              uid = {this.props.uid}
-              changeClass={this.props.changeClass}
-              activeClass = {this.props.activeClass}/>
-          )
-          
-          );
-    }
+    return(
+      <div>
+        <div>
+            <b>Search For Class Channel</b>
+              <div class="search bar4">
+                  <form>
+                    <input
+                      type = "text"
+                      id = "search"
+                      className="search bar4"
+                      //value={query}
+                      onChange={ this.handleOnInputChange }
+                      placeholder="input Class Name"
+                    />
+                  </form>
+              </div>
+          </div>
+        {this.renderList()}
+      </div>
+    );   
+  }
 }
 
 export default Class_list;
