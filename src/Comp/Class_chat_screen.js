@@ -19,15 +19,14 @@ class ClassChatScreen extends Component {
     super();
     this.state = {
       messages: [{
-        id: 1,
-        text: 'My message',
+        text: '',
         createdAt: new Date(Date.UTC(2016, 5, 11, 17, 20, 0)),
         user: {
           id: 2,
           name: 'React',
           avatar: 'https://facebook.github.io/react/img/logo_og.png',
         },
-        image: "http://5b0988e595225.cdn.sohucs.com/images/20190311/6918fe35e3424cc99fd759e246397af9.jpeg",
+        image: "",
         
       }],
       user: {
@@ -43,7 +42,7 @@ class ClassChatScreen extends Component {
   componentDidMount() {
     this.loadMessages();
   }
-
+  //加载消息
   loadMessages () {
     let ref = firebase.database().ref("/" + this.props.title + "/messages/");
     ref.on("child_added", snap => {
@@ -53,16 +52,16 @@ class ClassChatScreen extends Component {
       {
         message.createdAt = new Date(message.createdAt)
       }
-      const { messages } = this.state;
+      const messages = this.state.messages;
       messages.push(message);
       this.setState(
         {
-          messages
+          messages:messages
         }
       );
     });
   }
-
+  //发出消息
   onSend(messages) {
     console.log(messages)
     for (var message of messages) {
@@ -70,7 +69,19 @@ class ClassChatScreen extends Component {
       this.saveMessage(message);
     }
   }
-
+  //以message形式保存图片在实时数据库中
+  saveImage(url){
+    let image_message = {
+      text: '',
+      createdAt: new Date(),
+      user: {},
+      image: url,
+  }
+    image_message.user = this.state.user
+    console.log(image_message)
+    this.saveMessage(image_message)
+  }
+  //保存message在实时数据库中
   saveMessage(message) {
     return firebase
       .database()
@@ -80,7 +91,7 @@ class ClassChatScreen extends Component {
         console.error("Error saving message to Database:", error);
       });
   }
-
+  //一堆渲染，不用改
   renderBubble = props => {
     return (
       <Bubble
@@ -92,7 +103,7 @@ class ClassChatScreen extends Component {
         }}
       />
     )
-    }
+  }
 
   renderSignOutButton() {
     if (this.state.isAuthenticated) {
@@ -159,7 +170,7 @@ class ClassChatScreen extends Component {
       </AppBar>
     );
   }
-
+  //上传图片或者文件
   handleChange = e => {
     console.log(this.state.image)
     if (e.target.files[0]) {
@@ -189,9 +200,9 @@ class ClassChatScreen extends Component {
           .child(this.state.image.name)
           .getDownloadURL()
           .then(url => {
-            this.setState({url:url});
+            this.setState({url:url}, this.saveImage(url));
           });
-      }
+      },
     );
   };
   
@@ -215,9 +226,7 @@ class ClassChatScreen extends Component {
           <input type="file" onChange={this.handleChange} />
           <button onClick={this.handleUpload}>Upload</button>
           <br />
-          {this.state.url}
           <br />
-          <img src={this.state.url || "http://via.placeholder.com/300"} alt="firebase-image" />
         </div>
       </div>
     );
@@ -247,4 +256,3 @@ const styles = {
   },
 };
 export default ClassChatScreen;
-//ReactDOM.render(<App />, document.getElementById("root"));
