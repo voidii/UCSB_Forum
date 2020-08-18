@@ -1,23 +1,23 @@
 {
   "files": {
     "main.css": "/UCSB_Forum/static/css/main.73f17661.chunk.css",
-    "main.js": "/UCSB_Forum/static/js/main.2e3c675c.chunk.js",
-    "main.js.map": "/UCSB_Forum/static/js/main.2e3c675c.chunk.js.map",
+    "main.js": "/UCSB_Forum/static/js/main.1e826117.chunk.js",
+    "main.js.map": "/UCSB_Forum/static/js/main.1e826117.chunk.js.map",
     "runtime-main.js": "/UCSB_Forum/static/js/runtime-main.22dd0454.js",
     "runtime-main.js.map": "/UCSB_Forum/static/js/runtime-main.22dd0454.js.map",
-    "static/js/2.df0a4f4c.chunk.js": "/UCSB_Forum/static/js/2.df0a4f4c.chunk.js",
-    "static/js/2.df0a4f4c.chunk.js.map": "/UCSB_Forum/static/js/2.df0a4f4c.chunk.js.map",
+    "static/js/2.8f206ea5.chunk.js": "/UCSB_Forum/static/js/2.8f206ea5.chunk.js",
+    "static/js/2.8f206ea5.chunk.js.map": "/UCSB_Forum/static/js/2.8f206ea5.chunk.js.map",
     "index.html": "/UCSB_Forum/index.html",
-    "precache-manifest.14ab951bd2cadd46fa35cf74ec7ba77c.js": "/UCSB_Forum/precache-manifest.14ab951bd2cadd46fa35cf74ec7ba77c.js",
+    "precache-manifest.f504e3c47dd8f1d176c2623cb7ae31f9.js": "/UCSB_Forum/precache-manifest.f504e3c47dd8f1d176c2623cb7ae31f9.js",
     "service-worker.js": "/UCSB_Forum/service-worker.js",
     "static/css/main.73f17661.chunk.css.map": "/UCSB_Forum/static/css/main.73f17661.chunk.css.map",
-    "static/js/2.df0a4f4c.chunk.js.LICENSE.txt": "/UCSB_Forum/static/js/2.df0a4f4c.chunk.js.LICENSE.txt",
+    "static/js/2.8f206ea5.chunk.js.LICENSE.txt": "/UCSB_Forum/static/js/2.8f206ea5.chunk.js.LICENSE.txt",
     "static/media/UCSB.jpg": "/UCSB_Forum/static/media/UCSB.83a7d2be.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.22dd0454.js",
-    "static/js/2.df0a4f4c.chunk.js",
+    "static/js/2.8f206ea5.chunk.js",
     "static/css/main.73f17661.chunk.css",
-    "static/js/main.2e3c675c.chunk.js"
+    "static/js/main.1e826117.chunk.js"
   ]
 }

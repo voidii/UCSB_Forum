@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/UCSB_Forum/precache-manifest.14ab951bd2cadd46fa35cf74ec7ba77c.js"
+  "/UCSB_Forum/precache-manifest.f504e3c47dd8f1d176c2623cb7ae31f9.js"
 );
 
 self.addEventListener('message', (event) => {
