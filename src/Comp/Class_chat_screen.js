@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { GiftedChat, Bubble } from "react-web-gifted-chat";
+import "firebase/storage";
 import firebase from "firebase";
 import Button from "@material-ui/core/Button";
 import Avatar from "@material-ui/core/Avatar";
@@ -13,6 +14,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 
 
 class ClassChatScreen extends Component {
+  
   constructor(props) {
     super();
     this.state = {
@@ -32,6 +34,9 @@ class ClassChatScreen extends Component {
         id: props.uid,
       },
       isAuthenticated: true,
+      image:null,
+      progress:"",
+      url:""
     };
   }
 
@@ -155,6 +160,43 @@ class ClassChatScreen extends Component {
     );
   }
 
+  handleChange = e => {
+    console.log(this.state.image)
+    if (e.target.files[0]) {
+      this.setState({
+        image:e.target.files[0]
+      },console.log(this.state.image))
+    }
+  };
+
+  handleUpload = () => {
+    console.log(this.state.image)
+    const uploadTask = firebase.storage().ref("/" + this.props.title + "/image/" + this.state.image.name).put(this.state.image);
+    uploadTask.on(
+      "state_changed",
+      snapshot => {
+        const progres = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+        this.setState({progress:progres});
+      },
+      error => {
+        console.log(error);
+      },
+      () => {
+        firebase.storage()
+          .ref("/" + this.props.title + "/image/")
+          .child(this.state.image.name)
+          .getDownloadURL()
+          .then(url => {
+            this.setState({url:url});
+          });
+      }
+    );
+  };
+  
+
+
   render() {
     return (
       <div style={styles.container}>
@@ -165,6 +207,17 @@ class ClassChatScreen extends Component {
         <div style={styles.settings}>
           {this.renderSettingsHeader()}
           {this.renderSignOutButton()}
+        </div>
+        <div>
+          <progress value={this.state.progress} max="100" />
+          <br />
+          <br />
+          <input type="file" onChange={this.handleChange} />
+          <button onClick={this.handleUpload}>Upload</button>
+          <br />
+          {this.state.url}
+          <br />
+          <img src={this.state.url || "http://via.placeholder.com/300"} alt="firebase-image" />
         </div>
       </div>
     );

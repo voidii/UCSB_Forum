@@ -116,6 +116,10 @@ https://www.npmjs.com/package/react-web-gifted-chat
 
 增加了聊天室的搜索功能，大小写无所谓
 
+8/18/2020
+
+图片功能基本实现，仍有CSS和UI等问题
+
 
 
 ///////////////////////////
