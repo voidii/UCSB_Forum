@@ -3,6 +3,8 @@ import Home from './Home'
 import Roomate from './roommate'
 import ClassRoom from './class_room'
 import About from './About'
+import GroundPage from './Ground_page'
+
 
 class body extends Component {
     
@@ -14,7 +16,7 @@ class body extends Component {
         else if(this.props.activeTab === 3)
             return <ClassRoom uid = {this.props.uid} edu = {this.props.edu}/>
         else  if(this.props.activeTab === 4)
-            return <Home/>
+            return <GroundPage uid = {this.props.uid}/>
         else  if(this.props.activeTab === 6)
             return <About/>
         else

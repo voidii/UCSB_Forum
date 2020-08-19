@@ -1,0 +1,50 @@
+
+  a {
+    text-decoration: none;
+  }
+  .comment-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
+    width: 95%;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    margin: 15px;
+    padding: 30px;
+  }
+  .metadata,
+  .submitform {
+    width: 95%;
+  }
+  .submitform {
+    margin-top: 20px;
+  }
+  
+  .form-row {
+    padding: 10px 0;
+  }
+  .form-row input[type='text'],
+  .form-row button,
+  .form-row textarea {
+    border-radius: 2px;
+  }
+  .form-row input[type='text'],
+  .form-row textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 8px 10px;
+  }
+  .form-row textarea {
+    min-height: 100px;
+  }
+  .form-row button {
+    padding: 6px;
+    width: 80px;
+    background: #97CBFF;
+    border: 1px solid #97CBFF;
+    color: #fff;
+    font-size: 13px;
+  }
+  .form-row button:hover {
+    cursor: pointer;
+  }

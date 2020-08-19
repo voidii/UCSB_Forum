@@ -4,10 +4,6 @@ import Reply from './reply';
 import * as firebase from 'firebase';
 import './Comment.css'
 
-
-
-
-
 class Roommate extends Component {
     constructor(){
         super();
@@ -165,6 +161,8 @@ class Roommate extends Component {
           //this.setState({ messages });
           const id_for_message = new Date().getTime().toString() + uid;
           const { messages } = this.state;
+          console.log(typeof messages)
+          console.log(messages)
           messages.push({ id_for_message, uid, name, message,date,des,Email })
           this.setState({ messages });
         }
